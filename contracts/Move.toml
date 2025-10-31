@@ -1,0 +1,20 @@
+[package]
+name = "sui_flash_loan"
+version = "1.0.0"
+upgradeable = true
+authors = ["Sui Flash Loan Team"]
+license = "MIT"
+published_at = "2024-01-01T00:00:00Z"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
+
+[addresses]
+sui_flash_loan = "0x0"
+admin = "0x0"
+
+[dev-dependencies]
+
+[dev-addresses]
+sui_flash_loan = "0x0"
+admin = "0x42"

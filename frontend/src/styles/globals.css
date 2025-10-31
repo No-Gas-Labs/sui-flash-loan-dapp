@@ -1,0 +1,289 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom CSS Variables */
+:root {
+  --color-primary: 59 130 246;
+  --color-secondary: 168 85 247;
+  --color-success: 34 197 94;
+  --color-warning: 245 158 11;
+  --color-error: 239 68 68;
+  --color-slate: 30 41 59;
+}
+
+/* Dark theme variables */
+.dark {
+  --color-primary: 96 165 250;
+  --color-secondary: 196 181 253;
+  --color-slate: 248 250 252;
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500;
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-slate-600 text-white hover:bg-slate-700 focus:ring-slate-500;
+  }
+  
+  .btn-success {
+    @apply btn bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+  }
+  
+  .btn-warning {
+    @apply btn bg-warning-600 text-white hover:bg-warning-700 focus:ring-warning-500;
+  }
+  
+  .btn-error {
+    @apply btn bg-error-600 text-white hover:bg-error-700 focus:ring-error-500;
+  }
+  
+  .btn-outline {
+    @apply btn border-2 border-slate-600 text-slate-300 hover:bg-slate-800 focus:ring-slate-500;
+  }
+  
+  .btn-ghost {
+    @apply btn text-slate-300 hover:bg-slate-800 focus:ring-slate-500;
+  }
+  
+  /* Input styles */
+  .input {
+    @apply w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .input-error {
+    @apply border-error-500 focus:ring-error-500;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 shadow-xl;
+  }
+  
+  .card-header {
+    @apply px-6 py-4 border-b border-slate-700;
+  }
+  
+  .card-body {
+    @apply px-6 py-4;
+  }
+  
+  .card-footer {
+    @apply px-6 py-4 border-t border-slate-700;
+  }
+  
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-800;
+  }
+  
+  .badge-success {
+    @apply badge bg-success-100 text-success-800;
+  }
+  
+  .badge-warning {
+    @apply badge bg-warning-100 text-warning-800;
+  }
+  
+  .badge-error {
+    @apply badge bg-error-100 text-error-800;
+  }
+  
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-2 border-slate-600 border-t-transparent;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-slate-900/20 backdrop-blur-lg border border-slate-700/50;
+  }
+  
+  /* Pulse animation for loading states */
+  .pulse-bg {
+    @apply animate-pulse bg-slate-700;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 to-secondary-600 bg-clip-text text-transparent;
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  
+  .shadow-glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* Animation classes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-slate-900;
+}
+
+/* Transitions */
+.transition-all-300 {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    @apply text-black bg-white;
+  }
+  
+  .card {
+    @apply bg-white border border-gray-300 shadow-none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .btn {
+    @apply border-2 border-current;
+  }
+  
+  .card {
+    @apply border-2 border-slate-500;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .card {
+    @apply rounded-lg;
+  }
+  
+  .btn {
+    @apply px-3 py-1.5 text-xs;
+  }
+}
+
+/* Dark mode specific styles */
+.dark .input {
+  @apply bg-slate-900 border-slate-700 text-white;
+}
+
+.dark .card {
+  @apply bg-slate-900/50 border-slate-700;
+}
+
+/* Custom component animations */
+.dropdown-enter {
+  @apply animate-slide-down;
+}
+
+.dropdown-leave {
+  @apply animate-slide-up;
+}
+
+.modal-enter {
+  @apply animate-fade-in;
+}
+
+.modal-leave {
+  @apply animate-fade-in;
+}
+
+/* Transaction status colors */
+.tx-success { @apply text-success-400; }
+.tx-pending { @apply text-warning-400; }
+.tx-failed { @apply text-error-400; }
+
+/* Wallet connection states */
+.wallet-connected { @apply text-success-400; }
+.wallet-disconnected { @apply text-slate-400; }
+.wallet-connecting { @apply text-warning-400; }
